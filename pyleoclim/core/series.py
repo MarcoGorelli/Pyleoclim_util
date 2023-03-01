@@ -4221,7 +4221,7 @@ class Series:
 
         This is a convenience method: doing
 
-            ser.resample('Y').mean()
+            ser.resample('YS').mean()
 
         will do the same thing as
 
@@ -4281,7 +4281,7 @@ class Series:
             md['label'] = md['label'] + ' (' + rule + ' resampling)'
         
         ser = self.to_pandas()
-        return SeriesResampler(f'{multiplier}Y', ser, md, kwargs)
+        return SeriesResampler(f'{multiplier}YS', ser, md, kwargs)
 
 
 class SeriesResampler:
