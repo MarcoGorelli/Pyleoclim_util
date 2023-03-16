@@ -106,6 +106,37 @@ class MultipleSeries:
         self.remove(label)
 
     def __add__(self, other):
+        """
+        Append a pyleo.Series, or combine with another pyleo.MultipleSeries.
+        
+        Parameters
+        ----------
+        other
+            pyleo.Series or pyleo.MultipleSeries to combine with.
+        
+        Returns
+        -------
+        pyleo.MultipleSeries
+
+        Examples
+        --------
+        .. ipython:: python
+            :okwarning:
+            :okexcept:
+
+            import pyleoclim as pyleo
+            import numpy as np
+            ts1 = pyleo.Series(time=np.array([1, 2, 4]), value=np.array([7, 4, 9]), time_unit='years CE', label='ts1')
+            ts2 = pyleo.Series(time=np.array([1, 3, 4]), value=np.array([7, 8, 1]), time_unit='years CE', label='ts2')
+            ts3 = pyleo.Series(time=np.array([1, 3, 4]), value=np.array([7, 8, 1]), time_unit='years CE', label='ts3')
+            ts4 = pyleo.Series(time=np.array([1, 3, 4]), value=np.array([7, 8, 1]), time_unit='years CE', label='ts4')
+            ts5 = pyleo.Series(time=np.array([1, 3, 4]), value=np.array([7, 8, 1]), time_unit='years CE', label='ts5')
+            ms1 = pyleo.MultipleSeries([ts1, ts2, ts3])
+            ms2 = pyleo.MultipleSeries([ts4, ts5])
+        
+            # Combine the Multiple Series ms1 and ms2 by using the addition operator:
+            ms = ms1 + ms2
+        """
          from ..core.series import Series
          if isinstance(other, Series):
              return self.append(other)
